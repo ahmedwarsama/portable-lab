@@ -1,0 +1,14 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: lab-gw
+spec:
+  gatewayClassName: lab-eg
+  listeners:
+    - name: envoy-admin
+      protocol: HTTP
+      port: 80
+      hostname: "envoy-admin.lab"
+      allowedRoutes:
+        namespaces:
+          from: All
