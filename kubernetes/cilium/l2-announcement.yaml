@@ -7,7 +7,5 @@ spec:
     matchExpressions:
       - key: node-role.kubernetes.io/control-plane
         operator: DoesNotExist
-  interfaces:
-    - enp1s0
   externalIPs: true
   loadBalancerIPs: true

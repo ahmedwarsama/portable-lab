@@ -11,6 +11,8 @@ helmCharts:
     repo: https://helm.cilium.io
     includeCRDs: true
     valuesInline:
+      l2announcements:
+        enabled: true
       securityContext:
         capabilities:
           ciliumAgent:
