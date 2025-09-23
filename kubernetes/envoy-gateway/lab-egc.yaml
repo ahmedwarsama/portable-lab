@@ -38,13 +38,15 @@ spec:
             - type: File
               file:
                 path: /dev/stdout
+    metrics:
+      enablePerEndpointStats: true
   provider:
     type: Kubernetes
     kubernetes:
       envoyService:
         externalTrafficPolicy: Local
         annotations:
-          "lbipam.cilium.io/ips": "192.168.122.10"
+          "lbipam.cilium.io/ips": "192.168.122.140"
       envoyDaemonSet:
         strategy:
           type: RollingUpdate
