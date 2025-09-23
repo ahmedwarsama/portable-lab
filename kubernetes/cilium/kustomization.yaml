@@ -96,3 +96,7 @@ helmCharts:
         chainingMode: "none"
         exclusive: false
 
+
+resources:
+  - l2-announcement.yaml
+  - lb-pool.yaml
