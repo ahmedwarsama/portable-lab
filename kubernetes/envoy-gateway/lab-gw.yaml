@@ -12,3 +12,10 @@ spec:
       allowedRoutes:
         namespaces:
           from: All
+    - name: test-listener
+      protocol: HTTP
+      port: 80
+      hostname: "test.lab"
+      allowedRoutes:
+        namespaces:
+          from: All
