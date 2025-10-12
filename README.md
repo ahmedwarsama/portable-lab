@@ -6,7 +6,7 @@ mv k3d-linux-amd64 /usr/local/bin/k3d
 ```
 Deploy the cluster without flannel and LB since cilium will be used for this.
 ```
-k3d cluster create lab1 \                                    
+k3d cluster create lab1 \
   --agents 3 \
   --k3s-arg '--flannel-backend=none@server:*' \
   --k3s-arg '--disable-network-policy@server:*' \
