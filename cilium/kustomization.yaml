@@ -91,6 +91,6 @@ helmCharts:
       routingMode: native
 
 resources:
-- l2-announcement.yaml
+  #- l2-announcement.yaml
 - lb-pool.yaml
 - cilium-bgp.yaml
