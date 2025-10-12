@@ -65,7 +65,7 @@ helmCharts:
         mode: cluster-pool
         operator:
           clusterPoolIPv4PodCIDRList:
-            - 10.10.10.0/18
+            - 10.10.0.0/18
           clusterPoolIPv4MaskSize: 24
       ipv4NativeRoutingCIDR: 10.10.10.0/18 # Should be set to the pod cidr
       ipv6:
@@ -77,11 +77,6 @@ helmCharts:
       loadBalancer:
         mode: snat
         algorithm: maglev
-      maglev:
-        hashSeed: lI4aUIlC9jMKCWyC
-        tableSize: 65521
-      socketLB:
-        hostNamespaceOnly: true
       nodePort:
         enabled: true
       prometheus:
@@ -94,9 +89,6 @@ helmCharts:
           serviceMonitor:
             enabled: false
       routingMode: native
-      cni:
-        chainingMode: "none"
-        exclusive: false
 
 resources:
 - l2-announcement.yaml
