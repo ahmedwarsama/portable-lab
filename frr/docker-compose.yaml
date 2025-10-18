@@ -1,0 +1,37 @@
+services:
+  frr:
+    image: frrouting/frr:latest
+    container_name: frr
+    privileged: true
+    networks:
+      lab-net:
+        ipv4_address: 172.30.0.2
+    volumes:
+      - ./frr.conf:/etc/frr/frr.conf
+      - ./daemons:/etc/frr/daemons
+    restart: unless-stopped
+
+  netshoot:
+    image: nicolaka/netshoot
+    container_name: netshoot
+    privileged: true
+    tty: true
+    stdin_open: true
+    networks:
+      lab-net:
+        ipv4_address: 172.30.0.100
+    depends_on:
+      - frr
+    command: >
+      sh -c "ip route del default &&
+             ip route add default via 172.30.0.2 dev eth0 &&
+             sleep infinity"
+
+networks:
+  lab-net:
+    name: lab-net
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.30.0.0/24
+          gateway: 172.30.0.1
