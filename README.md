@@ -12,5 +12,6 @@ k3d cluster create lab1 \
   --k3s-arg '--disable-network-policy@server:*' \
   --k3s-arg '--cluster-cidr=192.168.0.0/16@server:*' \
   --k3s-arg "--disable=traefik@server:*" \
+  --network lab-net \
   --no-lb
 ```
