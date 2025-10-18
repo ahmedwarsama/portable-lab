@@ -46,7 +46,7 @@ spec:
       envoyService:
         externalTrafficPolicy: Local
         annotations:
-          "lbipam.cilium.io/ips": "172.21.0.140"
+          "lbipam.cilium.io/ips": "10.21.0.140"
       envoyDaemonSet:
         strategy:
           type: RollingUpdate
