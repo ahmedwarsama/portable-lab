@@ -5,4 +5,4 @@ metadata:
 spec:
   allowFirstLastIPs: No
   blocks:
-  - cidr: "172.21.0.128/26"
+  - cidr: "10.21.0.128/26"

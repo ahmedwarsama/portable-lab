@@ -9,7 +9,7 @@ spec:
     peers:
     - name: "frr"
       peerASN: 65001
-      peerAddress: 172.21.0.6
+      peerAddress: 172.30.0.2
       peerConfigRef:
         name: "cilium-peer"
 ---
