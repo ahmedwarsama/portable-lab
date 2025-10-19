@@ -13,9 +13,14 @@ spec:
         app: stateless-app
     spec:
       containers:
-      - name: echo
-        image: hashicorp/http-echo
-        args:
-          - "-text=Hello from lab-1"
+      - name: nginx
+        image: nginx
         ports:
         - containerPort: 80
+        volumeMounts:
+        - name: html
+          mountPath: /usr/share/nginx/html
+      volumes:
+      - name: html
+        configMap:
+          name: lab1-html
