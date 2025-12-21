@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stateless-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: stateless-app
+  template:
+    metadata:
+      labels:
+        app: stateless-app
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: html
+          mountPath: /usr/share/nginx/html
+      volumes:
+      - name: html
+        configMap:
+          name: lab1-html

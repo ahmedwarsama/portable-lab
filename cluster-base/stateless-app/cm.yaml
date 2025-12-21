@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: lab1-html
+data:
+  index.html: |
+    OVERRIDE_ME
