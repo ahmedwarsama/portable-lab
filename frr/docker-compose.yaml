@@ -1,37 +1,72 @@
 services:
-  frr:
+  frr-1:
     image: frrouting/frr:latest
-    container_name: frr
+    container_name: frr-1
     privileged: true
     networks:
-      lab-net:
-        ipv4_address: 172.30.0.2
+      lab-net-1:
+        ipv4_address: 10.10.10.2
     volumes:
-      - ./frr.conf:/etc/frr/frr.conf
+      - ./frr-1.conf:/etc/frr/frr.conf
       - ./daemons:/etc/frr/daemons
     restart: unless-stopped
 
-  netshoot:
+  netshoot-1:
     image: nicolaka/netshoot
-    container_name: netshoot
+    container_name: netshoot-1
     privileged: true
     tty: true
     stdin_open: true
     networks:
-      lab-net:
-        ipv4_address: 172.30.0.100
+      lab-net-1:
+        ipv4_address: 10.10.10.100
     depends_on:
-      - frr
+      - frr-1
     command: >
       sh -c "ip route del default &&
-             ip route add default via 172.30.0.2 dev eth0 &&
+             ip route add default via 10.10.10.2 dev eth0 &&
+             sleep infinity"
+
+  frr-2:
+    image: frrouting/frr:latest
+    container_name: frr-2
+    privileged: true
+    networks:
+      lab-net-2:
+        ipv4_address: 10.20.20.2
+    volumes:
+      - ./frr-2.conf:/etc/frr/frr.conf
+      - ./daemons:/etc/frr/daemons
+    restart: unless-stopped
+
+  netshoot-2:
+    image: nicolaka/netshoot
+    container_name: netshoot-2
+    privileged: true
+    tty: true
+    stdin_open: true
+    networks:
+      lab-net-2:
+        ipv4_address: 10.20.20.100
+    depends_on:
+      - frr-2
+    command: >
+      sh -c "ip route del default &&
+             ip route add default via 10.20.20.2 dev eth0 &&
              sleep infinity"
 
 networks:
-  lab-net:
-    name: lab-net
+  lab-net-1:
+    name: lab-net-1
     driver: bridge
     ipam:
       config:
-        - subnet: 172.30.0.0/24
-          gateway: 172.30.0.1
+        - subnet: 10.10.10.0/24
+          gateway: 10.10.10.1
+  lab-net-2:
+    name: lab-net-2
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.20.20.0/24
+          gateway: 10.20.20.1

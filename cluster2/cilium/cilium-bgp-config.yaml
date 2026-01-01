@@ -8,7 +8,7 @@ spec:
     localASN: 65200
     peers:
     - name: "frr"
-      peerASN: 65001
-      peerAddress: 10.10.10.2
+      peerASN: 65002
+      peerAddress: 10.20.20.2
       peerConfigRef:
         name: "cilium-peer"

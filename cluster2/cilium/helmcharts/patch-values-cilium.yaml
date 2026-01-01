@@ -4,4 +4,4 @@ metadata:
   name: cilium
 name: cilium
 valuesInline:
-  k8sServiceHost: 10.10.10.7
+  k8sServiceHost: 10.20.20.3
